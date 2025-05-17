@@ -40,11 +40,16 @@ import javax.imageio.ImageIO;
 public final class QrCodeGeneratorDemo {
 	
 	// The main application program.
-	public static void main(String[] args) throws IOException {
-		doBasicDemo();
-		doVarietyDemo();
-		doSegmentDemo();
-		doMaskDemo();
+	public static void main(String[] args) throws Exception {
+//		doBasicDemo();
+//		doVarietyDemo();
+//		doSegmentDemo();
+//		doMaskDemo();
+
+		String link = "https://blog.churnobyl.com";
+		QrCode qr = QrCode.encodeText(link, QrCode.Ecc.HIGH);
+		BufferedImage img = QrCodeWithLogo.drawLogo(qr, 10, "img_1.png");
+		ImageIO.write(img, "png", new File("qr-with-logo.png"));
 	}
 	
 	
